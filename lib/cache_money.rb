@@ -30,6 +30,13 @@ class ActiveRecord::Base
     include Cash
     Config.create(self, options)
   end
+  def <=>(other)
+    if self.id == other.id then 
+      0
+    else
+      self.id < other.id ? -1 : 1
+    end
+  end
 end
 
 module Cash
